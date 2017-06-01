@@ -13,4 +13,7 @@ package pkg_general_characteristics is
     constant nz_datawidth_loweerbound   : natural := 0;
     constant nz_datawidth_upperbound    : natural := 1;
 
+    constant neanderTrue    : std_logic := '1';
+    constant neanderFalse   : std_logic := '0';
+
 end pkg_general_characteristics;

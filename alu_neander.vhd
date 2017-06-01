@@ -30,43 +30,29 @@ begin
 
 alu_operation_result <= sig_out;
 alu : process(alu_select, alu_input_x, alu_input_y)
-begin
-
-    case( alu_select ) is
+begins
+    case ( alu_select ) is
         when alu_add => sig_out <= alu_input_x + alu_input_y;
-
         when alu_and => sig_out <= alu_input_x and alu_input_y;
-
         when alu_or => sig_out <= alu_input_x and alu_input_y;
-
         when alu_not_x => sig_out <= alu_input_x;
-
         when alu_y => sig_out <=  alu_input_y;
-
         when others => sig_out <= (others=>'0');
-
     end case;
 end process alu;
 
 
+alu_nz(0) <= alu_flag_zero
 alu_nz(1) <= alu_flag_negative;
 alu_nz : process(sig_out)
 begin
     if sig_out(7) = '1' then
         alu_flag_negative <= '1';
         alu_flag_zero <= '0';
-    elsif sig_out = ula_zero_output then
+    elsif sig_out = alu_zero_output then
         alu_flag_negative <= '0';
         alu_flag_zero <= '1';
     end if;
 end process alu_nz;
-
-
-
-
-
-
-
-
 
 end Behavioral;

@@ -7,7 +7,6 @@ use IEEE.STD_LOGIC_1164.ALL;
 use work.pkg_alu_constant_definitions.all;
 use work.pkg_general_characteristics.all;
 
-
 -- Accumalutor entity definition
 -- it is used in all operations with alu
 entity alu_neander is
@@ -19,7 +18,6 @@ entity alu_neander is
         alu_nz  : out std_logic_vector(1 downto 0) := (others=>'0');
         alu_select : in std_logic_vector(aluSelectWidth_upperbound downto aluSelectWidth_lowerbound) := (others=>'0'));
 end alu_neander;
-
 
 architecture Behavioral of alu_neander is
     signal sig_out : std_logic_vector (datawidth_upperbound downto datawidth_lowerbound) := (others=>'0');
@@ -40,7 +38,6 @@ begins
         when others => sig_out <= (others=>'0');
     end case;
 end process alu;
-
 
 alu_nz(0) <= alu_flag_zero
 alu_nz(1) <= alu_flag_negative;

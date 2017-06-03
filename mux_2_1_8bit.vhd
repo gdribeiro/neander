@@ -9,23 +9,29 @@ use work.pkg_alu_constant_definitions.all;
 
 --  entity definition
 -- it is used in all operations with ULA
-entity general_8_bit_register is
+entity mux_2_1_8bit is
 
     Port (
-        mux_2_1_clk  : in std_logic;
-        mux_2_1_rst  : in std_logic; -- enabled when high
-        mux_2_1_load : in std_logic; -- enabled when high
-        mux_2_1_in   : in std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)    := (others=>'0');
-    	mux_2_1_out  : out std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)   := (others=>'0'));
-end general_8_bit_register;
+        mux_2_1_sel     : in std_logic;
+        mux_2_1_in_a    : in std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)    := (others=>'0');
+        mux_2_1_in_b    : in std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)    := (others=>'0');
+    	mux_2_1_out     : out std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)   := (others=>'0'));
+end mux_2_1_8bit;
 
-architecture Behavioral of general_8_bit_register is
-    signal sig_reg_8_out : std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)    := (others=>'0');
-begin
-mux_2_1_out <= sig_reg_8_out;
-mux_2_1 : process(mux_2_1_rst, mux_2_1_clk, mux_2_1_load)
+architecture Behavioral of mux_2_1_8bit is
+    signal sig_mux_2_1_out	:	std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)   := (others=>'0');
 begin
 
 
+mux_2_1_out <= sig_mux_2_1_out;
+mux_2_1 : process(mux_2_1_sel, mux_2_1_in_a, mux_2_1_in_b)
+begin
+    case (mux_2_1_sel) is
+        when '0' =>
+            sig_mux_2_1_out <= mux_2_1_in_a;
+        when others =>
+            sig_mux_2_1_out <= mux_2_1_in_b;
+    end case;
 end process mux_2_1;
+
 end Behavioral;

@@ -28,7 +28,7 @@ begin
 
 alu_operation_result <= sig_out;
 alu : process(alu_select, alu_input_x, alu_input_y)
-begins
+begin
     case ( alu_select ) is
         when alu_add => sig_out <= alu_input_x + alu_input_y;
         when alu_and => sig_out <= alu_input_x and alu_input_y;

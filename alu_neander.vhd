@@ -7,8 +7,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use work.pkg_alu_constant_definitions.all;
 use work.pkg_general_characteristics.all;
 
--- Accumalutor entity definition
--- it is used in all operations with alu
+
 entity alu_neander is
 
     Port (
@@ -30,7 +29,7 @@ alu_operation_result <= sig_out;
 alu : process(alu_select, alu_input_x, alu_input_y)
 begin
     case ( alu_select ) is
-        when alu_add => sig_out <= alu_input_x + alu_input_y;
+        when alu_add => sig_out <= signed(alu_input_x + alu_input_y);
         when alu_and => sig_out <= alu_input_x and alu_input_y;
         when alu_or => sig_out <= alu_input_x and alu_input_y;
         when alu_not_x => sig_out <= alu_input_x;
@@ -39,7 +38,7 @@ begin
     end case;
 end process alu;
 
-alu_nz(0) <= alu_flag_zero
+alu_nz(0) <= alu_flag_zero;
 alu_nz(1) <= alu_flag_negative;
 alu_nz : process(sig_out)
 begin

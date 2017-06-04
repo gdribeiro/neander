@@ -20,8 +20,8 @@ end alu_neander;
 
 architecture Behavioral of alu_neander is
     signal sig_out : std_logic_vector (datawidth_upperbound downto datawidth_lowerbound) := (others=>'0');
-    signal sig_alu_flag_negative  : out std_logic := '0';
-    signal sig_alu_flag_zero  : out std_logic := '0';
+    signal sig_alu_flag_negative    : std_logic := '0';
+    signal sig_alu_flag_zero        : std_logic := '0';
 
 begin
 
@@ -29,26 +29,26 @@ alu_operation_result <= sig_out;
 alu : process(alu_select, alu_input_x, alu_input_y)
 begin
     case ( alu_select ) is
-        when alu_add => sig_out <= signed(alu_input_x + alu_input_y);
+        when alu_add => sig_out <= (alu_input_x + alu_input_y);
         when alu_and => sig_out <= alu_input_x and alu_input_y;
-        when alu_or => sig_out <= alu_input_x and alu_input_y;
-        when alu_not_x => sig_out <= alu_input_x;
+        when alu_or => sig_out <= alu_input_x or alu_input_y;
+        when alu_not_x => sig_out <= not alu_input_x;
         when alu_y => sig_out <=  alu_input_y;
         when others => sig_out <= (others=>'0');
     end case;
 end process alu;
 
-alu_nz(0) <= alu_flag_zero;
-alu_nz(1) <= alu_flag_negative;
-alu_nz : process(sig_out)
+alu_nz(0) <= sig_alu_flag_zero;
+alu_nz(1) <= sig_alu_flag_negative;
+alu_nz_process : process(sig_out)
 begin
     if sig_out(7) = '1' then
-        alu_flag_negative <= '1';
-        alu_flag_zero <= '0';
-    elsif sig_out = alu_zero_output then
-        alu_flag_negative <= '0';
-        alu_flag_zero <= '1';
+        sig_alu_flag_negative <= '1';
+        sig_alu_flag_zero <= '0';
+    elsif ( (sig_out = alu_zero_output) and (sig_out = "00000000"))  then
+        sig_alu_flag_negative <= '0';
+        sig_alu_flag_zero <= '1';
     end if;
-end process alu_nz;
+end process alu_nz_process;
 
 end Behavioral;

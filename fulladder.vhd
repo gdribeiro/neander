@@ -9,16 +9,16 @@ use work.pkg_alu_constant_definitions.all;
 
 --  entity definition
 -- it is used in all operations with ULA
-entity full_adder is
+entity fulladder is
     Port (
         x       : in std_logic;
         y       : in std_logic;
         c_in    : in std_logic;
         s       : out std_logic;
         c_out   : out std_logic);
-end full_adder;
+end fulladder;
 
-architecture Behavioral of full_adder is
+architecture Behavioral of fulladder is
     signal sig_s	    :	std_logic := '0';
     signal sig_c_out    :	std_logic := '0';
 begin

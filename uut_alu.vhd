@@ -1,8 +1,6 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
-use work.pkg_alu_constant_definitions.all;
-
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
@@ -36,8 +34,8 @@ ARCHITECTURE behavior OF uut_alu IS
    -- No clocks detected in port list. Replace <clock> below with
    -- appropriate port name
 
-   constant clk_period : time := 10 ns;
-   signal clock : STD_LOGIC;
+   constant clock_period : time := 10 ns;
+   signal clock : std_logic;
 
 BEGIN
 
@@ -51,12 +49,12 @@ BEGIN
         );
 
    -- Clock process definitions
-   clk_process :process
+   clock_process :process
    begin
 		clock <= '0';
-		wait for clk_period/2;
+		wait for clock_period/2;
 		clock <= '1';
-		wait for clk_period/2;
+		wait for clock_period/2;
    end process;
 
 
@@ -66,31 +64,33 @@ BEGIN
       -- hold reset state for 100 ns.
       wait for 100 ns;
 
-      alu_input_x <= "00001000";
-      alu_input_y <= "00001001";
-      wait for clk_period;
-      alu_select <= alu_and;
-      wait for clk_period;
+      wait for clock_period*10;
 
-      alu_input_x <= "11011110";
-      alu_input_y <= "00100001";
-      wait for clk_period;
-      alu_select <= alu_or;
-      wait for clk_period;
-
-      alu_input_x <= "11111111";
-      alu_input_y <= "00000001";
-      wait for clk_period;
-      alu_select <= alu_y;
-      wait for clk_period;
-
-
-
-
-
-      wait for clk_period*10;
-
-      -- insert stimulus here
+      -- ADD
+      alu_input_y <= "01010101";
+      alu_input_x <= "10101010";
+      alu_select <= "000";
+      wait for clock_period*2;
+      -- AND
+      alu_input_y <= "01010101";
+      alu_input_x <= "10101010";
+      alu_select <= "001";
+      wait for clock_period*2;
+      -- OR
+      alu_input_y <= "01010101";
+      alu_input_x <= "10101010";
+      alu_select <= "010";
+      wait for clock_period*2;
+      -- NOT X
+      alu_input_y <= "01010101";
+      alu_input_x <= "10101010";
+      alu_select <= "011";
+      wait for clock_period*2;
+      -- Y
+      alu_input_y <= "01010101";
+      alu_input_x <= "10101010";
+      alu_select <= "100";
+      wait for clock_period*2;
 
       wait;
    end process;

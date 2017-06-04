@@ -13,6 +13,7 @@ entity pc_8_bit is
         pc_clk  : in std_logic;
         pc_rst  : in std_logic; -- enabled when high
         pc_load : in std_logic; -- enabled when high
+        pc_inc  : in std_logic; -- enabled when hich
         pc_in   : in std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)    := (others=>'0');
     	pc_out  : out std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)   := (others=>'0'));
 end pc_8_bit;
@@ -22,16 +23,18 @@ architecture Behavioral of pc_8_bit is
 begin
 
 pc_out <= sig_pc_out;
-pc: process(pc_rst, pc_clk, pc_load)
+pc: process(pc_rst, pc_clk, pc_load, pc_inc)
 begin
     if (pc_rst = neanderTrue) then
         sig_pc_out <= (others=>'0');
     elsif (pc_clk'event and pc_clk = neanderTrue) then
         if pc_load = neanderTrue then
             sig_pc_out <= pc_in;
-        else
+        elsif (pc_inc = neanderTrue) then
             sig_pc_out <= sig_pc_out + 1;
-        end if;
+        else
+            sig_pc_out <= sig_pc_out;
+    end if;
     end if;
 end process pc;
 

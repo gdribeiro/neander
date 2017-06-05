@@ -9,15 +9,14 @@ use work.pkg_general_characteristics.all;
 use work.pkg_neander_instructions_constants.all;
 
 
+
 entity neander_cpu is
 
     Port (
         instruction_in  : in std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
-        alu_nz          : in std_logic_vector(nz_datawidth_upperbound downto nz_datawidth_loweerbound);
-
+        alu_nz          : in std_logic_vector(nz_datawidth_upperbound downto nz_datawidth_lowerbound);
         neander_cpu_rst : in std_logic;
         neander_cpu_clk : in std_logic;
-
         load_ac         : out std_logic;
         load_rem        : out std_logic;
         load_nz         : out std_logic;
@@ -28,7 +27,6 @@ entity neander_cpu is
         inc_pc          : out std_logic;
         sel_alu         : out std_logic_vector (aluSelectWidth_upperbound downto aluSelectWidth_lowerbound);
         sel_mux         : out std_logic;
-
         read_mem        : out std_logic;
         write_mem       : out std_logic);
 end neander_cpu;
@@ -39,65 +37,103 @@ architecture Behavioral of neander_cpu is
     type t_instructions is (NOP_i, STA_i, LDA_i, ADD_i, OR_i, AND_i, NOT_i, JMP_i, JN_i, JZ_i, HLT_i);
     signal inst : t_instructions;
 
-    type t_state is (s0, s1, s3, s4, s5, sReadMem, sWriteMem, hltState );
+    type t_state is (s0, s1, s2, s3, s4, s5, s6, s7, sReadMem, sWriteMem, hltState );
     signal state, nextState, stallState : t_state := s0;
 
     signal s_load_ac, s_load_rem, s_load_nz, s_load_rdm, s_load_wdm, s_load_ir, s_load_pc,
         s_inc_pc, s_sel_mux, s_read_mem, s_write_mem : std_logic := neanderFalse;
     signal s_sel_alu : std_logic_vector (aluSelectWidth_upperbound downto aluSelectWidth_lowerbound) := "000";
-    signal s_alu_nz  : std_logic_vector (nz_datawidth_upperbound downto nz_datawidth_loweerbound) := "00";
+    signal s_alu_nz  : std_logic_vector (nz_datawidth_upperbound downto nz_datawidth_lowerbound) := "00";
 
 begin
 
-    control_process : process (state)
+    control_process : process (state, inst, s_alu_nz)
     begin
         case( state ) is
             when s0 =>
-                s_load_ac, s_load_rem, s_load_nz, s_load_rdm, s_load_wdm, s_load_ir, s_load_pc, s_inc_pc, s_sel_mux, s_read_mem, s_write_mem := neanderFalse;
+                s_load_ac   <= neanderFalse;
+                --s_load_rem  <= neanderFalse;
+                s_load_nz   <= neanderFalse;
+                s_load_rdm  <= neanderFalse;
+                s_load_wdm  <= neanderFalse;
+                s_load_ir   <= neanderFalse;
+                s_load_pc   <= neanderFalse;
+                s_inc_pc    <= neanderFalse;
+                --s_sel_mux   <= neanderFalse;
+                s_read_mem  <= neanderFalse;
+                s_write_mem <= neanderFalse;
 
                 s_sel_mux <= neanderFalse;
                 s_load_rem <= neanderTrue;
                 nextState <= s1;
 
             when s1 =>
-                s_load_ac, s_load_rem, s_load_nz, s_load_rdm, s_load_wdm, s_load_ir, s_load_pc, s_inc_pc, s_sel_mux, s_read_mem, s_write_mem := neanderFalse;
+                s_load_ac   <= neanderFalse;
+                s_load_rem  <= neanderFalse;
+                s_load_nz   <= neanderFalse;
+                s_load_rdm  <= neanderFalse;
+                s_load_wdm  <= neanderFalse;
+                s_load_ir   <= neanderFalse;
+                s_load_pc   <= neanderFalse;
+                s_sel_mux   <= neanderFalse;
+                --s_inc_pc    <= neanderFalse;
+                --s_read_mem  <= neanderFalse;
+                s_write_mem <= neanderFalse;
 
                 s_read_mem <= neanderTrue;
                 s_inc_pc <= neanderTrue;
-                -- This is state is just to delay in one clock cicle
-                -- time necessary to read from memmory
                 stallState <= s2;
                 nextState <= sReadMem;
 
             when s2 =>
-                s_load_ac, s_load_rem, s_load_nz, s_load_rdm, s_load_wdm, s_load_ir, s_load_pc, s_inc_pc, s_sel_mux, s_read_mem, s_write_mem := neanderFalse;
+                s_load_ac   <= neanderFalse;
+                s_load_rem  <= neanderFalse;
+                s_load_nz   <= neanderFalse;
+                s_load_rdm  <= neanderFalse;
+                s_load_wdm  <= neanderFalse;
+                --s_load_ir   <= neanderFalse;
+                s_load_pc   <= neanderFalse;
+                s_inc_pc    <= neanderFalse;
+                s_sel_mux   <= neanderFalse;
+                s_read_mem  <= neanderFalse;
+                s_write_mem <= neanderFalse;
 
                 s_load_ir <= neanderTrue;
                 nextState <= s3;
 
             when s3 =>
-                s_load_ac, s_load_rem, s_load_nz, s_load_rdm, s_load_wdm, s_load_ir, s_load_pc, s_inc_pc, s_sel_mux, s_read_mem, s_write_mem := neanderFalse;
+                s_load_ac   <= neanderFalse;
+                s_load_rem  <= neanderFalse;
+                s_load_nz   <= neanderFalse;
+                s_load_rdm  <= neanderFalse;
+                s_load_wdm  <= neanderFalse;
+                s_load_ir   <= neanderFalse;
+                s_load_pc   <= neanderFalse;
+                s_inc_pc    <= neanderFalse;
+                s_sel_mux   <= neanderFalse;
+                s_read_mem  <= neanderFalse;
+                s_write_mem <= neanderFalse;
 
                 case ( inst ) is
                     when NOT_i =>
-                        sel_alu <= alu_not_x;
+                        s_sel_alu <= alu_not_x;
                         s_load_ac <= neanderTrue;
                         s_load_nz <= neanderTrue;
                         nextState <= s0;
                     when JN_i =>
                         if (s_alu_nz(1) = neanderFalse) then
-                            inc_pc <= neanderTrue;
+                            s_inc_pc <= neanderTrue;
                             nextState <= s0;
                         end if;
                     when JZ_i =>
                         if (s_alu_nz(0) = neanderFalse) then
-                            inc_pc <= neanderTrue;
+                            s_inc_pc <= neanderTrue;
                             nextState <= s0;
                         end if;
                     when NOP_i =>
                         nextState <= s0;
                     when HLT_i =>
-                        inc_pc <= neanderFalse;
+                        s_inc_pc <= neanderFalse;
                         nextState <= hltState;
                     when others =>
                         s_sel_mux <= neanderFalse;
@@ -106,7 +142,17 @@ begin
                 end case;
 
             when s4 =>
-                s_load_ac, s_load_rem, s_load_nz, s_load_rdm, s_load_wdm, s_load_ir, s_load_pc, s_inc_pc, s_sel_mux, s_read_mem, s_write_mem := neanderFalse;
+                s_load_ac   <= neanderFalse;
+                s_load_rem  <= neanderFalse;
+                s_load_nz   <= neanderFalse;
+                s_load_rdm  <= neanderFalse;
+                s_load_wdm  <= neanderFalse;
+                s_load_ir   <= neanderFalse;
+                s_load_pc   <= neanderFalse;
+                s_inc_pc    <= neanderFalse;
+                s_sel_mux   <= neanderFalse;
+                s_read_mem  <= neanderFalse;
+                s_write_mem <= neanderFalse;
 
                 case ( inst ) is
                     when JMP_i =>
@@ -128,7 +174,17 @@ begin
                 end case;
 
             when s5 =>
-                s_load_ac, s_load_rem, s_load_nz, s_load_rdm, s_load_wdm, s_load_ir, s_load_pc, s_inc_pc, s_sel_mux, s_read_mem, s_write_mem := neanderFalse;
+                s_load_ac   <= neanderFalse;
+                s_load_rem  <= neanderFalse;
+                s_load_nz   <= neanderFalse;
+                s_load_rdm  <= neanderFalse;
+                s_load_wdm  <= neanderFalse;
+                s_load_ir   <= neanderFalse;
+                s_load_pc   <= neanderFalse;
+                s_inc_pc    <= neanderFalse;
+                s_sel_mux   <= neanderFalse;
+                s_read_mem  <= neanderFalse;
+                s_write_mem <= neanderFalse;
 
                 case( inst ) is
                     when JMP_i =>
@@ -151,7 +207,17 @@ begin
                 end case;
 
             when s6 =>
-                s_load_ac, s_load_rem, s_load_nz, s_load_rdm, s_load_wdm, s_load_ir, s_load_pc, s_inc_pc, s_sel_mux, s_read_mem, s_write_mem := neanderFalse;
+                s_load_ac   <= neanderFalse;
+                s_load_rem  <= neanderFalse;
+                s_load_nz   <= neanderFalse;
+                s_load_rdm  <= neanderFalse;
+                s_load_wdm  <= neanderFalse;
+                s_load_ir   <= neanderFalse;
+                s_load_pc   <= neanderFalse;
+                s_inc_pc    <= neanderFalse;
+                s_sel_mux   <= neanderFalse;
+                s_read_mem  <= neanderFalse;
+                s_write_mem <= neanderFalse;
 
                 case ( inst ) is
                     when STA_i =>
@@ -164,7 +230,17 @@ begin
                 end case;
 
             when s7 =>
-                s_load_ac, s_load_rem, s_load_nz, s_load_rdm, s_load_wdm, s_load_ir, s_load_pc, s_inc_pc, s_sel_mux, s_read_mem, s_write_mem := neanderFalse;
+                s_load_ac   <= neanderFalse;
+                s_load_rem  <= neanderFalse;
+                s_load_nz   <= neanderFalse;
+                s_load_rdm  <= neanderFalse;
+                s_load_wdm  <= neanderFalse;
+                s_load_ir   <= neanderFalse;
+                s_load_pc   <= neanderFalse;
+                s_inc_pc    <= neanderFalse;
+                s_sel_mux   <= neanderFalse;
+                s_read_mem  <= neanderFalse;
+                s_write_mem <= neanderFalse;
 
                 case ( inst ) is
                     when STA_i =>
@@ -172,22 +248,22 @@ begin
                         stallState <= s0;
                         nextState <= sWriteMem;
                     when LDA_i =>
-                        sel_alu <= alu_y;
+                        s_sel_alu <= alu_y;
                         s_load_ac <= neanderTrue;
                         s_load_nz <= neanderTrue;
                         nextState <= s0;
                     when ADD_i =>
-                        sel_alu <= alu_add;
+                        s_sel_alu <= alu_add;
                         s_load_ac <= neanderTrue;
                         s_load_nz <= neanderTrue;
                         nextState <= s0;
                     when OR_i =>
-                        sel_alu <= alu_or;
+                        s_sel_alu <= alu_or;
                         s_load_ac <= neanderTrue;
                         s_load_nz <= neanderTrue;
                         nextState <= s0;
                     when AND_i =>
-                        sel_alu <= alu_and;
+                        s_sel_alu <= alu_and;
                         s_load_ac <= neanderTrue;
                         s_load_nz <= neanderTrue;
                         nextState <= s0;
@@ -196,18 +272,14 @@ begin
                 end case;
 
             when sReadMem =>
-                s_load_ac, s_load_rem, s_load_nz, s_load_rdm, s_load_wdm, s_load_ir, s_load_pc, s_inc_pc, s_sel_mux, s_read_mem, s_write_mem := neanderFalse;
-
                 s_load_rdm <= neanderTrue;
                 nextState <= stallState;
 
             when sWriteMem =>
-                s_load_ac, s_load_rem, s_load_nz, s_load_rdm, s_load_wdm, s_load_ir, s_load_pc, s_inc_pc, s_sel_mux, s_read_mem, s_write_mem := neanderFalse;
-
                 nextState <= stallState;
 
             when hltState =>
-                inc_pc <= neanderFalse;
+                s_inc_pc <= neanderFalse;
                 nextState <= hltState;
 
             when others =>

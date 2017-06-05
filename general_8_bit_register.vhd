@@ -30,7 +30,7 @@ begin
         sig_reg_8_out <= (others=>'0');
     -- On clock rising edge puts the input value to the register's output
     -- if the load is enabled
-elsif (register_8_clk'event and register_8_clk = neanderTrue) then
+    elsif (register_8_clk'event and register_8_clk = neanderTrue) then
         if register_8_load = neanderTrue then
             sig_reg_8_out <= register_8_in;
         else

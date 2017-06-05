@@ -10,7 +10,7 @@ package pkg_general_characteristics is
     constant instrucionWidth_lowerbound   : natural := 0;
     constant instrucionWidth_upperbound   : natural := 3;
 
-    constant nz_datawidth_loweerbound   : natural := 0;
+    constant nz_datawidth_lowerbound   : natural := 0;
     constant nz_datawidth_upperbound    : natural := 1;
 
     constant neanderTrue    : std_logic := '1';

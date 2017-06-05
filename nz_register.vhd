@@ -14,21 +14,21 @@ entity general_2_bit_register is
         nz_register_clk  : in std_logic;
         nz_register_rst  : in std_logic; -- enabled when high
         nz_register_load : in std_logic; -- enabled when high
-        nz_register_in   : in std_logic_vector (nz_datawidth_upperbound downto nz_datawidth_lowerbound)    := others=>'0';
-    	nz_register_out  : out std_logic_vector (nz_datawidth_upperbound downto nz_datawidth_lowerbound)   := others=>'0');
+        nz_register_in   : in std_logic_vector (nz_datawidth_upperbound downto nz_datawidth_lowerbound)    := (others=>'0');
+    	nz_register_out  : out std_logic_vector (nz_datawidth_upperbound downto nz_datawidth_lowerbound)   := (others=>'0'));
 end general_2_bit_register ;
 
 architecture Behavioral of general_2_bit_register is
 
-    signal sig_out : std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)    := others=>'0';
+    signal sig_out : std_logic_vector (nz_datawidth_upperbound downto nz_datawidth_lowerbound)    := (others=>'0');
 
 begin
 
-    nz_reg : process
+    nz_reg : process (nz_register_rst, nz_register_load, nz_register_in, nz_register_clk)
     begin
-        if nz_register_rst then
+        if ( nz_register_rst = neanderFalse ) then
             sig_out <= (others=>'0');
-        else
+        elsif (nz_register_clk'event and nz_register_clk = neanderTrue) then
             if (nz_register_load = neanderTrue) then
                 sig_out <= nz_register_in;
             else

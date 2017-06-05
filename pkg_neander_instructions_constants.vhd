@@ -1,6 +1,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
+use work.pkg_general_characteristics.all;
+
 package pkg_neander_instructions_constants is
 
     -- Constants definition for instructions

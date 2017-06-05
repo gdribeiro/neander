@@ -49,7 +49,7 @@ begin
 
     control_process : process (state, inst, s_alu_nz)
     begin
-        case( state ) is
+        case ( state ) is
             when s0 =>
                 s_load_ac   <= neanderFalse;
                 --s_load_rem  <= neanderFalse;
@@ -272,10 +272,34 @@ begin
                 end case;
 
             when sReadMem =>
+                s_load_ac   <= neanderFalse;
+                s_load_rem  <= neanderFalse;
+                s_load_nz   <= neanderFalse;
+                --s_load_rdm  <= neanderFalse;
+                s_load_wdm  <= neanderFalse;
+                s_load_ir   <= neanderFalse;
+                s_load_pc   <= neanderFalse;
+                s_inc_pc    <= neanderFalse;
+                s_sel_mux   <= neanderFalse;
+                --s_read_mem  <= neanderFalse;
+                s_write_mem <= neanderFalse;
+
                 s_load_rdm <= neanderTrue;
                 nextState <= stallState;
 
             when sWriteMem =>
+                s_load_ac   <= neanderFalse;
+                s_load_rem  <= neanderFalse;
+                s_load_nz   <= neanderFalse;
+                s_load_rdm  <= neanderFalse;
+                s_load_wdm  <= neanderFalse;
+                s_load_ir   <= neanderFalse;
+                s_load_pc   <= neanderFalse;
+                s_inc_pc    <= neanderFalse;
+                s_sel_mux   <= neanderFalse;
+                s_read_mem  <= neanderFalse;
+                --s_write_mem <= neanderFalse;
+
                 nextState <= stallState;
 
             when hltState =>

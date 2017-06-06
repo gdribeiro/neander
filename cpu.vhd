@@ -105,34 +105,53 @@ architecture Behavioral of cpu is
             write_mem       : out std_logic);
     end component neander_cpu;
 
+    component read_write_selector is
+        Port (
+            rdm_clk     : in std_logic;
+            rdm_rst     : in std_logic;
+            rdm_load    : in std_logic;
+            rdm_wr_mem  : in std_logic;
+            rdm_rd_mem  : in std_logic;
+            rdm_acc_in  : out std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
+            rdm_mem_in  : out std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
+            rdm_mem_out : out std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
+            rdm_acc_out : out std_logic_vector(datawidth_upperbound downto datawidth_lowerbound));
+    end component read_write_selector;
 
 
-    signal sig_ac_out   : std_logic_vector (datawidth_upperbound downto datawidth_lowerbound);
-    signal clka, clkb   : std_logic;
-    signal wea, web     : std_logic_vector (0 downto 0);
-    signal addra, addrb : STD_LOGIC_VECTOR(7 DOWNTO 0);
-    signal dina, dinb   : STD_LOGIC_VECTOR(7 DOWNTO 0);
-    signal douta, doutb : STD_LOGIC_VECTOR(7 DOWNTO 0);
 
-    signal load_rem     : std_logic;
-    signal mux_output   : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
-    signal mux_sel      : std_logic;
-    signal pc_inc       : std_logic;
-    signal pc_out       : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
-    signal load_pc     : std_logic;
-    signal rdm_out      : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
-    signal load_wdm     : std_logic;
-    signal alu_out      : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
-    signal load_rdm     : std_logic;
-    signal load_ir      : std_logic;
-    signal opcode       : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
-    signal alu_nz       : std_logic_vector(nz_datawidth_upperbound downto nz_datawidth_lowerbound);
-    signal alu_select   : std_logic_vector(aluSelectWidth_upperbound downto aluSelectWidth_lowerbound);
-    signal load_nz      : std_logic;
-    signal nz_out       : std_logic_vector(nz_datawidth_upperbound downto nz_datawidth_lowerbound);
-    signal acc_out      : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
-    signal load_acc     : std_logic;
-    signal read_mem     : std_logic;
+
+    signal sig_ac_out   : std_logic_vector (datawidth_upperbound downto datawidth_lowerbound) := (others => '0');
+    signal clka, clkb   : std_logic  := '0';
+    signal wea, web     : std_logic_vector (0 downto 0)  := (others => '0');
+    signal addra, addrb : STD_LOGIC_VECTOR(7 DOWNTO 0)  := (others => '0');
+    signal dina, dinb   : STD_LOGIC_VECTOR(7 DOWNTO 0)  := (others => '0');
+    signal douta, doutb : STD_LOGIC_VECTOR(7 DOWNTO 0)  := (others => '0');
+
+    signal load_rem     : std_logic  := '0';
+    signal mux_output   : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound)  := (others => '0');
+    signal mux_sel      : std_logic  := '0';
+    signal pc_inc       : std_logic  := '0';
+    signal pc_out       : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound)  := (others => '0');
+    signal load_pc     : std_logic  := '0';
+    signal rdm_out      : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound)  := (others => '0');
+    signal load_wdm     : std_logic  := '0';
+    signal alu_out      : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound)  := (others => '0');
+    signal load_rdm     : std_logic  := '0';
+    signal load_ir      : std_logic  := '0';
+    signal opcode       : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound)  := (others => '0');
+    signal alu_nz       : std_logic_vector(nz_datawidth_upperbound downto nz_datawidth_lowerbound)  := (others => '0');
+    signal alu_select   : std_logic_vector(aluSelectWidth_upperbound downto aluSelectWidth_lowerbound)  := (others => '0');
+    signal load_nz      : std_logic  := '0';
+    signal nz_out       : std_logic_vector(nz_datawidth_upperbound downto nz_datawidth_lowerbound)  := (others => '0');
+    signal acc_out      : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound)  := (others => '0');
+    signal load_acc     : std_logic  := '0';
+    signal read_mem     : std_logic  := '0';
+    -- signal cpu_rdm_mem_out  : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
+    -- signal cpu_rdm_acc_out  : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
+    signal write_mem    : std_logic  := '0';
+    -- signal cpu_rdm_acc_in   : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
+    -- signal cpu_rdm_mem_in   : std_logic_vector(datawidth_upperbound downto datawidth_lowerbound);
 
 begin
 
@@ -140,6 +159,7 @@ begin
     clkb <= cpu_clk;
     addrb <= mem_addr;
     mem_out <= doutb;
+    wea(0)  <= write_mem;
     BRAM : memoryBRAM
         PORT MAP (clka => clka, wea => wea, addra => addra, dina => dina, douta => douta, clkb => clkb,
             web => web, addrb => addrb, dinb => dinb, doutb => doutb);
@@ -150,9 +170,11 @@ begin
 
     pc  : pc_8_bit port map (cpu_clk, cpu_rst, load_pc, pc_inc, rdm_out, pc_out);
 
+    -- From memory to other
     rdm : general_8_bit_register port map (cpu_clk, cpu_rst, load_rdm, douta, rdm_out);
 
-    wdm : general_8_bit_register port map (cpu_clk, cpu_rst, load_wdm, acc_out, dina);
+    -- From others to memory
+    wdm : general_8_bit_register port map (cpu_clk, cpu_rst, load_rdm, acc_out, dina);
 
     acc : general_8_bit_register port map (cpu_clk, cpu_rst, load_acc, alu_out, acc_out);
 
@@ -179,6 +201,6 @@ begin
         sel_alu         => alu_select,
         sel_mux         => mux_sel,
         read_mem        => read_mem,
-        write_mem       => wea(0));
+        write_mem       => write_mem);
 
 end Behavioral;

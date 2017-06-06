@@ -90,8 +90,7 @@ BEGIN
       -- insert stimulus here 
 
 
-		wait for cpu_clk_period*100;
-		cpu_rst <= '1';
+		
 		
 
 

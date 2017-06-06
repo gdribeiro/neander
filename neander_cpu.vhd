@@ -157,20 +157,25 @@ begin
                 case ( inst ) is
                     when JMP_i =>
                         s_read_mem <= neanderTrue;
-                        nextState  <= s5;
+                        stallState <= s5;
+                        nextState  <= sReadMem;
                     when JN_i =>
                         if (s_alu_nz(1) = neanderTrue) then
                             s_read_mem <= neanderTrue;
-                            nextState <= s5;
+                            stallState <= s5;
+                            nextState <= sReadMem;
                         end if;
                     when JZ_i =>
                         if (s_alu_nz(0) = neanderTrue) then
                             s_read_mem <= neanderTrue;
-                            nextState <= s5;
+                            stallState <= s5;
+                            nextState <= sReadMem;
                         end if;
                     when others =>
-                        s_read_mem <= neanderTrue;
                         s_inc_pc   <= neanderTrue;
+                        s_read_mem <= neanderTrue;
+                        stallState <= s5;
+                        nextState <= sReadMem;
                 end case;
 
             when s5 =>
@@ -221,7 +226,7 @@ begin
 
                 case ( inst ) is
                     when STA_i =>
-                        s_load_wdm <= neanderTrue;
+                        s_load_rdm <= neanderTrue;
                         nextState <= s7;
                     when others =>
                         s_read_mem <= neanderTrue;

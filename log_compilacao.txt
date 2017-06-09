@@ -1,0 +1,893 @@
+Regenerate Core - memoryBRAM: All required files are available.
+
+Process "Regenerate Core" completed successfully
+
+Started : "Synthesize - XST".
+Running xst...
+Command Line: xst -intstyle ise -ifn "C:/Users/i861175/ise/cpu/cpu.xst" -ofn "C:/Users/i861175/ise/cpu/cpu.syr"
+Reading design: cpu.prj
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Users/i861175/ise/cpu/pkg_general_characteristics.vhd" in Library work.
+Compiling vhdl file "C:/Users/i861175/ise/cpu/pkg_alu_constant_definitions.vhd" in Library work.
+Compiling vhdl file "C:/Users/i861175/ise/cpu/fulladder.vhd" in Library work.
+Architecture behavioral of Entity fulladder is up to date.
+Compiling vhdl file "C:/Users/i861175/ise/cpu/pkg_neander_instructions_constants.vhd" in Library work.
+Compiling vhdl file "C:/Users/i861175/ise/cpu/adder8.vhd" in Library work.
+Architecture behavioral of Entity adder8 is up to date.
+Compiling vhdl file "C:/Users/i861175/ise/cpu/ipcore_dir/memoryBRAM.vhd" in Library work.
+Architecture memorybram_a of Entity memorybram is up to date.
+Compiling vhdl file "C:/Users/i861175/ise/cpu/general_8_bit_register.vhd" in Library work.
+Architecture behavioral of Entity general_8_bit_register is up to date.
+Compiling vhdl file "C:/Users/i861175/ise/cpu/mux_2_1_8bit.vhd" in Library work.
+Architecture behavioral of Entity mux_2_1_8bit is up to date.
+Compiling vhdl file "C:/Users/i861175/ise/cpu/pc_8_bit.vhd" in Library work.
+Architecture behavioral of Entity pc_8_bit is up to date.
+Compiling vhdl file "C:/Users/i861175/ise/cpu/alu_neander.vhd" in Library work.
+Architecture behavioral of Entity alu_neander is up to date.
+Compiling vhdl file "C:/Users/i861175/ise/cpu/nz_register.vhd" in Library work.
+Architecture behavioral of Entity general_2_bit_register is up to date.
+Compiling vhdl file "C:/Users/i861175/ise/cpu/neander_cpu.vhd" in Library work.
+Architecture behavioral of Entity neander_cpu is up to date.
+Compiling vhdl file "C:/Users/i861175/ise/cpu/cpu.vhd" in Library work.
+Architecture behavioral of Entity cpu is up to date.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <cpu> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <general_8_bit_register> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <mux_2_1_8bit> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <pc_8_bit> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <alu_neander> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <general_2_bit_register> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <neander_cpu> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <adder8> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <fulladder> in library <work> (architecture <behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <cpu> in library <work> (Architecture <behavioral>).
+WARNING:Xst:2211 - "C:/Users/i861175/ise/cpu/cpu.vhd" line 163: Instantiating black box module <memoryBRAM>.
+Entity <cpu> analyzed. Unit <cpu> generated.
+
+Analyzing Entity <general_8_bit_register> in library <work> (Architecture <behavioral>).
+Entity <general_8_bit_register> analyzed. Unit <general_8_bit_register> generated.
+
+Analyzing Entity <mux_2_1_8bit> in library <work> (Architecture <behavioral>).
+Entity <mux_2_1_8bit> analyzed. Unit <mux_2_1_8bit> generated.
+
+Analyzing Entity <pc_8_bit> in library <work> (Architecture <behavioral>).
+Entity <pc_8_bit> analyzed. Unit <pc_8_bit> generated.
+
+Analyzing Entity <alu_neander> in library <work> (Architecture <behavioral>).
+INFO:Xst:1561 - "C:/Users/i861175/ise/cpu/alu_neander.vhd" line 82: Mux is complete : default of case is discarded
+Entity <alu_neander> analyzed. Unit <alu_neander> generated.
+
+Analyzing Entity <adder8> in library <work> (Architecture <behavioral>).
+Entity <adder8> analyzed. Unit <adder8> generated.
+
+Analyzing Entity <fulladder> in library <work> (Architecture <behavioral>).
+Entity <fulladder> analyzed. Unit <fulladder> generated.
+
+Analyzing Entity <general_2_bit_register> in library <work> (Architecture <behavioral>).
+Entity <general_2_bit_register> analyzed. Unit <general_2_bit_register> generated.
+
+Analyzing Entity <neander_cpu> in library <work> (Architecture <behavioral>).
+INFO:Xst:2679 - Register <s_load_wdm> in unit <neander_cpu> has a constant value of 0 during circuit operation. The register is replaced by logic.
+Entity <neander_cpu> analyzed. Unit <neander_cpu> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <general_8_bit_register>.
+    Related source file is "C:/Users/i861175/ise/cpu/general_8_bit_register.vhd".
+    Found 8-bit register for signal <sig_reg_8_out>.
+    Summary:
+	inferred   8 D-type flip-flop(s).
+Unit <general_8_bit_register> synthesized.
+
+
+Synthesizing Unit <mux_2_1_8bit>.
+    Related source file is "C:/Users/i861175/ise/cpu/mux_2_1_8bit.vhd".
+Unit <mux_2_1_8bit> synthesized.
+
+
+Synthesizing Unit <pc_8_bit>.
+    Related source file is "C:/Users/i861175/ise/cpu/pc_8_bit.vhd".
+    Found 8-bit up counter for signal <sig_pc_out>.
+    Summary:
+	inferred   1 Counter(s).
+Unit <pc_8_bit> synthesized.
+
+
+Synthesizing Unit <general_2_bit_register>.
+    Related source file is "C:/Users/i861175/ise/cpu/nz_register.vhd".
+    Found 2-bit register for signal <sig_out>.
+    Summary:
+	inferred   2 D-type flip-flop(s).
+Unit <general_2_bit_register> synthesized.
+
+
+Synthesizing Unit <neander_cpu>.
+    Related source file is "C:/Users/i861175/ise/cpu/neander_cpu.vhd".
+WARNING:Xst:647 - Input <instruction_in<3:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Using one-hot encoding for signal <state>.
+    Using one-hot encoding for signal <inst>.
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 52 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+INFO:Xst:2117 - HDL ADVISOR - Mux Selector <state> of Case statement line 52 was re-encoded using one-hot encoding. The case statement will be optimized (default statement optimization), but this optimization may lead to design initialization problems. To ensure the design works safely, you can:
+   	- add an 'INIT' attribute on signal <state> (optimization is then done without any risk)
+   	- use the attribute 'signal_encoding user' to avoid onehot optimization
+   	- use the attribute 'safe_implementation yes' to force XST to perform a safe (but less efficient) optimization
+    Found 16x11-bit ROM for signal <inst>.
+WARNING:Xst:737 - Found 11-bit latch for signal <stallState>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <s_read_mem>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <s_load_ac>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <s_write_mem>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 11-bit latch for signal <nextState>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <s_load_ir>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <s_load_pc>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <s_load_rdm>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <s_load_rem>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 1-bit latch for signal <s_sel_mux>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+WARNING:Xst:737 - Found 3-bit latch for signal <s_sel_alu>. Latches may be generated from incomplete case or if statements. We do not recommend the use of latches in FPGA/CPLD designs, as they may lead to timing problems.
+INFO:Xst:2371 - HDL ADVISOR - Logic functions respectively driving the data and gate enable inputs of this latch share common terms. This situation will potentially lead to setup/hold violations and, as a result, to simulation problems. This situation may come from an incomplete case statement (all selector values are not covered). You should carefully review if it was in your intentions to describe such a latch.
+    Found 11-bit register for signal <state>.
+    Summary:
+	inferred   1 ROM(s).
+Unit <neander_cpu> synthesized.
+
+
+Synthesizing Unit <fulladder>.
+    Related source file is "C:/Users/i861175/ise/cpu/fulladder.vhd".
+    Found 1-bit xor3 for signal <sig_s>.
+    Summary:
+	inferred   1 Xor(s).
+Unit <fulladder> synthesized.
+
+
+Synthesizing Unit <adder8>.
+    Related source file is "C:/Users/i861175/ise/cpu/adder8.vhd".
+Unit <adder8> synthesized.
+
+
+Synthesizing Unit <alu_neander>.
+    Related source file is "C:/Users/i861175/ise/cpu/alu_neander.vhd".
+WARNING:Xst:646 - Signal <sig_c_out> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <alu_neander> synthesized.
+
+
+Synthesizing Unit <cpu>.
+    Related source file is "C:/Users/i861175/ise/cpu/cpu.vhd".
+WARNING:Xst:653 - Signal <web<0>> is used but never assigned. This sourceless signal will be automatically connected to value 0.
+WARNING:Xst:1780 - Signal <sig_ac_out> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <read_mem> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <nz_out> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <load_wdm> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <dinb> is used but never assigned. This sourceless signal will be automatically connected to value 00000000.
+Unit <cpu> synthesized.
+
+WARNING:Xst:524 - All outputs of the instance <nz> of the block <general_2_bit_register> are unconnected in block <cpu>.
+   This instance will be removed from the design along with all underlying logic
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 16x11-bit ROM                                         : 1
+# Counters                                             : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 6
+ 11-bit register                                       : 1
+ 8-bit register                                        : 5
+# Latches                                              : 11
+ 1-bit latch                                           : 8
+ 11-bit latch                                          : 2
+ 3-bit latch                                           : 1
+# Xors                                                 : 8
+ 1-bit xor3                                            : 8
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+Reading core <ipcore_dir/memoryBRAM.ngc>.
+Loading core <memoryBRAM> for timing and area information for instance <BRAM>.
+WARNING:Xst:1293 - FF/Latch <0> has a constant value of 0 in block <1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <0> has a constant value of 0 in block <3>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <0> has a constant value of 0 in block <4>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <0> has a constant value of 0 in block <6>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <0> has a constant value of 0 in block <8>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <0> has a constant value of 0 in block <9>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <sig_reg_8_out_0> of sequential type is unconnected in block <ri>.
+WARNING:Xst:2677 - Node <sig_reg_8_out_1> of sequential type is unconnected in block <ri>.
+WARNING:Xst:2677 - Node <sig_reg_8_out_2> of sequential type is unconnected in block <ri>.
+WARNING:Xst:2677 - Node <sig_reg_8_out_3> of sequential type is unconnected in block <ri>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# ROMs                                                 : 1
+ 16x11-bit ROM                                         : 1
+# Counters                                             : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 51
+ Flip-Flops                                            : 51
+# Latches                                              : 11
+ 1-bit latch                                           : 8
+ 11-bit latch                                          : 2
+ 3-bit latch                                           : 1
+# Xors                                                 : 8
+ 1-bit xor3                                            : 8
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <10> in Unit <LPM_LATCH_1> is equivalent to the following 6 FFs/Latches, which will be removed : <9> <8> <6> <4> <3> <1>
+WARNING:Xst:1293 - FF/Latch <10> has a constant value of 0 in block <LPM_LATCH_1>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <nextState_10> of sequential type is unconnected in block <neander_cpu>.
+WARNING:Xst:2677 - Node <state_10> of sequential type is unconnected in block <neander_cpu>.
+
+Optimizing unit <cpu> ...
+
+Optimizing unit <general_8_bit_register> ...
+
+Optimizing unit <neander_cpu> ...
+
+Optimizing unit <adder8> ...
+
+Optimizing unit <alu_neander> ...
+WARNING:Xst:2677 - Node <ri/sig_reg_8_out_3> of sequential type is unconnected in block <cpu>.
+WARNING:Xst:2677 - Node <ri/sig_reg_8_out_2> of sequential type is unconnected in block <cpu>.
+WARNING:Xst:2677 - Node <ri/sig_reg_8_out_1> of sequential type is unconnected in block <cpu>.
+WARNING:Xst:2677 - Node <ri/sig_reg_8_out_0> of sequential type is unconnected in block <cpu>.
+WARNING:Xst:2677 - Node <control_unit/s_read_mem> of sequential type is unconnected in block <cpu>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block cpu, actual ratio is 7.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 54
+ Flip-Flops                                            : 54
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+
+Clock Information:
+------------------
+-----------------------------------------------------------------------+-----------------------------------+-------+
+Clock Signal                                                           | Clock buffer(FF name)             | Load  |
+-----------------------------------------------------------------------+-----------------------------------+-------+
+cpu_clk                                                                | BUFGP                             | 55    |
+control_unit/stallState_not0001(control_unit/stallState_not0001:O)     | NONE(*)(control_unit/stallState_7)| 4     |
+control_unit/nextState_not0001(control_unit/nextState_not000131:O)     | NONE(*)(control_unit/nextState_9) | 10    |
+control_unit/s_sel_alu_not0001(control_unit/s_sel_alu_not0001:O)       | NONE(*)(control_unit/s_sel_alu_2) | 3     |
+control_unit/s_load_ac_or0000(control_unit/s_load_ac_or000016:O)       | NONE(*)(control_unit/s_load_ac)   | 6     |
+control_unit/s_write_mem_or0000(control_unit/s_write_mem_or000013_f5:O)| NONE(*)(control_unit/s_write_mem) | 1     |
+-----------------------------------------------------------------------+-----------------------------------+-------+
+(*) These 5 clock signal(s) are generated by combinatorial logic,
+and XST is not able to identify which are the primary clock signals.
+Please use the CLOCK_SIGNAL constraint to specify the clock signal(s) generated by combinatorial logic.
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+-----------------------------------+------------------------+-------+
+Control Signal                     | Buffer(FF name)        | Load  |
+-----------------------------------+------------------------+-------+
+cpu_rst                            | IBUF                   | 54    |
+-----------------------------------+------------------------+-------+
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 6.140ns (Maximum Frequency: 162.861MHz)
+   Minimum input arrival time before clock: 1.791ns
+   Maximum output required time after clock: 5.962ns
+   Maximum combinational path delay: No path found
+
+=========================================================================
+
+Process "Synthesize - XST" completed successfully
+
+Started : "Translate".
+Running ngdbuild...
+Command Line: ngdbuild -intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc3s100e-vq100-5 cpu.ngc cpu.ngd
+
+Command Line: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe
+-intstyle ise -dd _ngo -sd ipcore_dir -nt timestamp -i -p xc3s100e-vq100-5
+cpu.ngc cpu.ngd
+
+Reading NGO file "C:/Users/i861175/ise/cpu/cpu.ngc" ...
+Loading design module "ipcore_dir/memoryBRAM.ngc"...
+Gathering constraint information from source properties...
+Done.
+
+Resolving constraint associations...
+Checking Constraint Associations...
+Done...
+
+Checking expanded design ...
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:   0
+
+Writing NGD file "cpu.ngd" ...
+Total REAL time to NGDBUILD completion:  3 sec
+Total CPU time to NGDBUILD completion:   3 sec
+
+Writing NGDBUILD log file "cpu.bld"...
+
+NGDBUILD done.
+
+Process "Translate" completed successfully
+
+Started : "Map".
+Running map...
+Command Line: map -intstyle ise -p xc3s100e-vq100-5 -cm area -ir off -pr off -c 100 -o cpu_map.ncd cpu.ngd cpu.pcf
+Using target part "3s100evq100-5".
+Mapping design into LUTs...
+Running directed packing...
+Running delay-based LUT packing...
+Running related packing...
+Updating timing models...
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   control_unit/nextState_not0001 is sourced by a combinatorial pin. This is not
+   good design practice. Use the CE pin to control the loading of data into the
+   flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   control_unit/s_load_ac_or0000 is sourced by a combinatorial pin. This is not
+   good design practice. Use the CE pin to control the loading of data into the
+   flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   control_unit/s_write_mem_or0000 is sourced by a combinatorial pin. This is
+   not good design practice. Use the CE pin to control the loading of data into
+   the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   control_unit/s_sel_alu_not0001 is sourced by a combinatorial pin. This is not
+   good design practice. Use the CE pin to control the loading of data into the
+   flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   control_unit/stallState_not0001 is sourced by a combinatorial pin. This is
+   not good design practice. Use the CE pin to control the loading of data into
+   the flip-flop.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA2> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA3> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA4> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA5> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA6> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA7> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA10> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA11> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA12> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA13> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA14> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA15> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA18> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA19> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA20> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA21> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA22> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA23> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA26> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA27> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA28> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA29> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA30> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA31> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+
+Design Summary:
+Number of errors:      0
+Number of warnings:   29
+Logic Utilization:
+  Total Number Slice Registers:          78 out of   1,920    4%
+    Number used as Flip Flops:           54
+    Number used as Latches:              24
+  Number of 4 input LUTs:               134 out of   1,920    6%
+Logic Distribution:
+  Number of occupied Slices:             89 out of     960    9%
+    Number of Slices containing only related logic:      89 out of      89 100%
+    Number of Slices containing unrelated logic:          0 out of      89   0%
+      *See NOTES below for an explanation of the effects of unrelated logic.
+  Total Number of 4 input LUTs:         134 out of   1,920    6%
+  Number of bonded IOBs:                 18 out of      66   27%
+  Number of RAMB16s:                      1 out of       4   25%
+  Number of BUFGMUXs:                     1 out of      24    4%
+
+Average Fanout of Non-Clock Nets:                3.43
+
+Peak Memory Usage:  282 MB
+Total REAL time to MAP completion:  24 secs
+Total CPU time to MAP completion:   2 secs
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity - e.g. two
+   LUTs are "related" if they share common inputs.  When assembling slices,
+   Map gives priority to combine logic that is related.  Doing so results in
+   the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin packing
+   unrelated logic into a slice once 99% of the slices are occupied through
+   related logic packing.
+
+   Note that once logic distribution reaches the 99% level through related
+   logic packing, this does not mean the device is completely utilized.
+   Unrelated logic packing will then begin, continuing until all usable LUTs
+   and FFs are occupied.  Depending on your timing budget, increased levels of
+   unrelated logic packing may adversely affect the overall timing performance
+   of your design.
+
+Mapping completed.
+See MAP report file "cpu_map.mrp" for details.
+
+Process "Map" completed successfully
+
+Started : "Place & Route".
+Running par...
+Command Line: par -w -intstyle ise -ol high -t 1 cpu_map.ncd cpu.ncd cpu.pcf
+
+
+
+Constraints file: cpu.pcf.
+Loading device for application Rf_Device from file '3s100e.nph' in environment C:\Xilinx\14.7\ISE_DS\ISE\.
+   "cpu" is an NCD, version 3.2, device xc3s100e, package vq100, speed -5
+
+Initializing temperature to 85.000 Celsius. (default - Range: -40.000 to 100.000 Celsius)
+Initializing voltage to 1.140 Volts. (default - Range: 1.140 to 1.320 Volts)
+
+INFO:Par:282 - No user timing constraints were detected or you have set the option to ignore timing constraints ("par
+   -x"). Place and Route will run in "Performance Evaluation Mode" to automatically improve the performance of all
+   internal clocks in this design. Because there are not defined timing requirements, a timing score will not be
+   reported in the PAR report in this mode. The PAR timing summary will list the performance achieved for each clock.
+   Note: For the fastest runtime, set the effort level to "std".  For best performance, set the effort level to "high".
+
+Device speed data version:  "PRODUCTION 1.27 2013-10-13".
+
+
+Design Summary Report:
+
+ Number of External IOBs                          18 out of 66     27%
+
+   Number of External Input IOBs                 10
+
+      Number of External Input IBUFs             10
+
+   Number of External Output IOBs                 8
+
+      Number of External Output IOBs              8
+
+   Number of External Bidir IOBs                  0
+
+
+   Number of BUFGMUXs                        1 out of 24      4%
+   Number of RAMB16s                         1 out of 4      25%
+   Number of Slices                         89 out of 960     9%
+      Number of SLICEMs                      0 out of 480     0%
+
+
+
+Overall effort level (-ol):   High
+Placer effort level (-pl):    High
+Placer cost table entry (-t): 1
+Router effort level (-rl):    High
+
+Starting initial Timing Analysis.  REAL time: 3 secs
+Finished initial Timing Analysis.  REAL time: 3 secs
+
+
+Starting Placer
+Total REAL time at the beginning of Placer: 3 secs
+Total CPU  time at the beginning of Placer: 1 secs
+
+Phase 1.1  Initial Placement Analysis
+Phase 1.1  Initial Placement Analysis (Checksum:1703) REAL time: 16 secs
+
+Phase 2.7  Design Feasibility Check
+Phase 2.7  Design Feasibility Check (Checksum:1703) REAL time: 16 secs
+
+Phase 3.31  Local Placement Optimization
+Phase 3.31  Local Placement Optimization (Checksum:1703) REAL time: 16 secs
+
+Phase 4.2  Initial Clock and IO Placement
+.........
+Phase 4.2  Initial Clock and IO Placement (Checksum:439ccc1) REAL time: 16 secs
+
+Phase 5.30  Global Clock Region Assignment
+Phase 5.30  Global Clock Region Assignment (Checksum:439ccc1) REAL time: 16 secs
+
+Phase 6.36  Local Placement Optimization
+Phase 6.36  Local Placement Optimization (Checksum:439ccc1) REAL time: 16 secs
+
+Phase 7.3  Local Placement Optimization
+..........
+Phase 7.3  Local Placement Optimization (Checksum:27807b18) REAL time: 16 secs
+
+Phase 8.5  Local Placement Optimization
+Phase 8.5  Local Placement Optimization (Checksum:27807b18) REAL time: 16 secs
+
+Phase 9.8  Global Placement
+.....
+.......
+Phase 9.8  Global Placement (Checksum:2152eda8) REAL time: 17 secs
+
+Phase 10.5  Local Placement Optimization
+Phase 10.5  Local Placement Optimization (Checksum:2152eda8) REAL time: 17 secs
+
+Phase 11.18  Placement Optimization
+Phase 11.18  Placement Optimization (Checksum:2647918c) REAL time: 18 secs
+
+Phase 12.5  Local Placement Optimization
+Phase 12.5  Local Placement Optimization (Checksum:2647918c) REAL time: 18 secs
+
+Total REAL time to Placer completion: 18 secs
+Total CPU  time to Placer completion: 3 secs
+Writing design to file cpu.ncd
+
+
+
+Starting Router
+
+
+Phase  1  : 682 unrouted;      REAL time: 19 secs
+
+Phase  2  : 625 unrouted;      REAL time: 19 secs
+
+Phase  3  : 122 unrouted;      REAL time: 19 secs
+
+Phase  4  : 154 unrouted; (Par is working to improve performance)     REAL time: 19 secs
+
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 19 secs
+
+Updating file: cpu.ncd with current fully routed design.
+
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 19 secs
+
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs
+
+Updating file: cpu.ncd with current fully routed design.
+
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs
+
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs
+
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs
+
+Phase 11  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs
+WARNING:Route:455 - CLK Net:control_unit/s_sel_alu_not0001 may have excessive skew because
+      3 CLK pins and 0 NON_CLK pins failed to route using a CLK template.
+WARNING:Route:455 - CLK Net:control_unit/stallState_not0001 may have excessive skew because
+      1 CLK pins and 0 NON_CLK pins failed to route using a CLK template.
+
+Total REAL time to Router completion: 20 secs
+Total CPU time to Router completion: 4 secs
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Generating "PAR" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++---------------------+--------------+------+------+------------+-------------+
+|        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++---------------------+--------------+------+------+------------+-------------+
+|       cpu_clk_BUFGP | BUFGMUX_X2Y10| No   |   33 |  0.019     |  0.063      |
++---------------------+--------------+------+------+------------+-------------+
+|control_unit/nextSta |              |      |      |            |             |
+|          te_not0001 |         Local|      |    6 |  0.096     |  1.668      |
++---------------------+--------------+------+------+------------+-------------+
+|control_unit/s_load_ |              |      |      |            |             |
+|           ac_or0000 |         Local|      |    6 |  0.017     |  1.017      |
++---------------------+--------------+------+------+------------+-------------+
+|control_unit/s_write |              |      |      |            |             |
+|         _mem_or0000 |         Local|      |    1 |  0.000     |  0.978      |
++---------------------+--------------+------+------+------------+-------------+
+|control_unit/s_sel_a |              |      |      |            |             |
+|          lu_not0001 |         Local|      |    3 |  0.001     |  0.999      |
++---------------------+--------------+------+------+------------+-------------+
+|control_unit/stallSt |              |      |      |            |             |
+|         ate_not0001 |         Local|      |    2 |  0.507     |  1.270      |
++---------------------+--------------+------+------+------------+-------------+
+
+* Net Skew is the difference between the minimum and maximum routing
+only delays for the net. Note this is different from Clock Skew which
+is reported in TRCE timing report. Clock Skew is the difference between
+the minimum and maximum path delays which includes logic delays.
+
+* The fanout is the number of component pins not the individual BEL loads,
+for example SLICE loads not FF loads.
+
+Timing Score: 0 (Setup: 0, Hold: 0)
+
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+----------------------------------------------------------------------------------------------------------
+  Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing
+                                            |             |    Slack   | Achievable | Errors |    Score
+----------------------------------------------------------------------------------------------------------
+  Autotimespec constraint for clock net cpu | SETUP       |         N/A|     5.509ns|     N/A|           0
+  _clk_BUFGP                                | HOLD        |     0.637ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+
+
+All constraints were met.
+INFO:Timing:2761 - N/A entries in the Constraints List may indicate that the
+   constraint is not analyzed due to the following: No paths covered by this
+   constraint; Other constraints intersect with this constraint; or This
+   constraint was disabled by a Path Tracing Control. Please run the Timespec
+   Interaction Report (TSI) via command line (trce tsi) or Timing Analyzer GUI.
+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+Total REAL time to PAR completion: 20 secs
+Total CPU time to PAR completion: 5 secs
+
+Peak Memory Usage:  288 MB
+
+Placement: Completed - No errors found.
+Routing: Completed - No errors found.
+
+Number of error messages: 0
+Number of warning messages: 2
+Number of info messages: 1
+
+Writing design to file cpu.ncd
+
+
+
+PAR done!
+
+Process "Place & Route" completed successfully
+
+Started : "Generate Post-Place & Route Static Timing".
+Running trce...
+Command Line: trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml cpu.twx cpu.ncd -o cpu.twr cpu.pcf
+Loading device for application Rf_Device from file '3s100e.nph' in environment
+C:\Xilinx\14.7\ISE_DS\ISE\.
+   "cpu" is an NCD, version 3.2, device xc3s100e, package vq100, speed -5
+
+Analysis completed Tue Jun 06 09:03:36 2017
+--------------------------------------------------------------------------------
+
+Generating Report ...
+
+Number of warnings: 0
+Total time: 2 secs
+
+Process "Generate Post-Place & Route Static Timing" completed successfully
+
+Started : "Generate Post-Place & Route Simulation Model".
+Running netgen...
+Command Line: netgen -intstyle ise -s 5  -pcf cpu.pcf -rpw 100 -tpw 0 -ar Structure -tm cpu -insert_pp_buffers true -w -dir netgen/par -ofmt vhdl -sim cpu.ncd cpu_timesim.vhd
+INFO:NetListWriters:635 - The generated VHDL netlist contains Xilinx SIMPRIM
+   simulation primitives and has to be used with SIMPRIM library for correct
+   compilation and simulation.
+INFO:NetListWriters - Xilinx recommends running separate simulations to check
+   for setup by specifying the MAX field in the SDF file and for hold by
+   specifying the MIN field in the SDF file. Please refer to Simulator
+   documentation for more details on specifying MIN and MAX field in the SDF.
+INFO:NetListWriters:665 - For more information on how to pass the SDF switches
+   to the simulator, see your Simulator tool documentation.
+
+Process "Generate Post-Place & Route Simulation Model" completed successfully
+
+Started : "Generate Programming File".
+Running bitgen...
+Command Line: bitgen -intstyle ise -f cpu.ut cpu.ncd
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   control_unit/nextState_not0001 is sourced by a combinatorial pin. This is not
+   good design practice. Use the CE pin to control the loading of data into the
+   flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   control_unit/s_load_ac_or0000 is sourced by a combinatorial pin. This is not
+   good design practice. Use the CE pin to control the loading of data into the
+   flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   control_unit/s_write_mem_or0000 is sourced by a combinatorial pin. This is
+   not good design practice. Use the CE pin to control the loading of data into
+   the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   control_unit/s_sel_alu_not0001 is sourced by a combinatorial pin. This is not
+   good design practice. Use the CE pin to control the loading of data into the
+   flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   control_unit/stallState_not0001 is sourced by a combinatorial pin. This is
+   not good design practice. Use the CE pin to control the loading of data into
+   the flip-flop.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA2> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA3> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA4> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA5> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA6> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA7> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA10> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA11> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA12> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA13> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA14> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA15> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA18> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA19> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA20> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA21> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA22> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA23> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA26> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA27> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA28> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA29> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA30> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+WARNING:PhysDesignRules:812 - Dangling pin <DOA31> on
+   block:<BRAM/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr
+   /ramloop[0].ram.r/s3_init.ram/dpram.dp36x36.ram.A>:<RAMB16_RAMB16A>.
+
+Process "Generate Programming File" completed successfully

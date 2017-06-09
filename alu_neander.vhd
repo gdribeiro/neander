@@ -11,11 +11,11 @@ use work.pkg_general_characteristics.all;
 entity alu_neander is
 
     Port (
-        alu_input_y    : in std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)    := (others=>'0');
-        alu_input_x    : in std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)    := (others=>'0');
-        alu_operation_result   : out std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)    := (others=>'0');
-        alu_nz  : out std_logic_vector(1 downto 0) := (others=>'0');
-        alu_select : in std_logic_vector(aluSelectWidth_upperbound downto aluSelectWidth_lowerbound) := (others=>'0'));
+        alu_input_y             : in std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)    := (others=>'0');
+        alu_input_x             : in std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)    := (others=>'0');
+        alu_operation_result    : out std_logic_vector (datawidth_upperbound downto datawidth_lowerbound)    := (others=>'0');
+        alu_nz                  : out std_logic_vector(1 downto 0) := (others=>'0');
+        alu_select              : in std_logic_vector(aluSelectWidth_upperbound downto aluSelectWidth_lowerbound) := (others=>'0'));
 end alu_neander;
 
 architecture Behavioral of alu_neander is
@@ -51,7 +51,7 @@ begin
 
     -- ALU operation select
     alu_operation_result <= sig_out;
-    alu : process(alu_select, alu_input_x, alu_input_y, sig_o)
+    alu : process(alu_select, alu_input_x, alu_input_y, sig_o, sig_out)
     begin
         case ( alu_select ) is
             when alu_add => sig_out <= sig_o;
